@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-03-12",
+  "vars": {
+    "CLOUDFLARE_ACCOUNT_ID": "YOUR_ACCOUNT_ID_HERE",
+    "CLOUDFLARE_REALTIMEKIT_APP_ID": "YOUR_APP_ID_HERE"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CLASSROOMS",
+        "class_name": "ClassroomCoordinator"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "ClassroomCoordinator"
+      ]
+    }
+  ]
+}
